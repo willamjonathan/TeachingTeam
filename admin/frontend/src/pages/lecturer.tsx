@@ -172,8 +172,10 @@ const LecturerList: React.FC = () => {
     };
 
     const handleAssignTaughtCourse = async () => {
+        // validation to check if the lecture and coursecode is selected first
         if (selectedLecturerId && selectedCourseCode) {
-            // Check if the lecturer is already assigned to the course
+            // validation to check if the lecturer is already assigned to the course
+            
             const isAlreadyAssigned = taughtCourses.some(
                 (taughtCourse) =>
                     String(taughtCourse.lecturer.id) === String(selectedLecturerId) &&
@@ -183,10 +185,10 @@ const LecturerList: React.FC = () => {
             console.log('lect',selectedLecturerId)
             console.log('course',selectedCourseCode)
             console.log("TEST",isAlreadyAssigned)
-    
+            // return none the function if already assigned
             if (isAlreadyAssigned) {
                 setError("Error: This lecturer is already assigned to this course.");
-                return; // Exit the function if already assigned
+                return; 
             }
     
             try {
@@ -211,8 +213,7 @@ const LecturerList: React.FC = () => {
                     },
                 });
     
-                console.log(response.data); // Log the response to check if the mutation was successful
-    
+                console.log(response.data); 
                 // Fetch updated taught courses
                 const taughtCourseResponse = await axios.post<GetTaughtCoursesResponse>(
                     "http://localhost:3006/graphql",
@@ -241,6 +242,8 @@ const LecturerList: React.FC = () => {
     
                 setTaughtCourses(taughtCourseResponse.data.data.getTaughtCourses || []); // Update taught courses
                 setError(""); // Clear any previous error message
+                alert("Lecturer assigned to course successfully!");
+
             } catch (err) {
                 console.error(err);
                 setError("Failed to assign taught course");

@@ -68,6 +68,7 @@ const CoursePage: React.FC = () => {
   }, []);
 
   const handleSubmit = async () => {
+    // validation, all field must be filled first before submitting 
     if (!newCourse.courseCode || !newCourse.title || !newCourse.description) {
       setError("All fields are required.");
       return;
@@ -116,6 +117,8 @@ const CoursePage: React.FC = () => {
       setCourses([...courses, addedCourse]);
       setNewCourse({ courseCode: "", title: "", description: "" });
       setError("");
+      window.alert("Course added successfully!");
+
     } catch (err: any) {
       console.error(err);
       const message = err?.response?.data?.errors?.[0]?.message || "Failed to add course";
@@ -158,6 +161,8 @@ const CoursePage: React.FC = () => {
         setEditingCourse(null);
         setNewCourse({ courseCode: "", title: "", description: "" });
         setError("");
+        window.alert("Course updated successfully!");
+
       } catch (err: any) {
         console.error(err);
         const message = err?.response?.data?.errors?.[0]?.message || "Failed to edit course";
@@ -182,6 +187,8 @@ const CoursePage: React.FC = () => {
 
       setCourses(courses.filter(course => course.courseCode !== courseCode));
       setError("");
+      window.alert("Course deleted successfully!");
+
     } catch (err: any) {
       console.error(err);
       const message = err?.response?.data?.errors?.[0]?.message || "Failed to delete course";
