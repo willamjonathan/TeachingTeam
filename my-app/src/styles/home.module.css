@@ -1,0 +1,214 @@
+.body {
+    background-color: #202223;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+    font-family: Arial, sans-serif;
+}
+
+.courses {
+    color: #fff;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: auto;
+    border-bottom: 2px solid white;
+    padding-bottom: 8px;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.homecontainer {
+    margin-top: 30px;
+    color: #fff;
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.box {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    background-color: #3e3f41;
+    margin: auto;
+    border-radius: 10px;
+    
+}
+
+.box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+.picture {
+    width: 90%;
+    height: 90%;
+    /* font-size: 32px; */
+    text-align: center;
+    margin: auto;
+    margin-top:5%;
+    background-color: #3e3f41;
+    border-radius: 10px;
+}
+
+.coursetitleBIG {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
+    height: 50%;           
+    text-align: center;     
+    font-size: 30px;
+  }
+  
+
+
+.boxtextcontainer {
+    background-color: #565859;
+    border-radius: 10px;
+    height:50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+.coursetitle{
+    font-size:20px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.popup {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    color: white;
+}
+
+.popupContent {
+    background-color: #202223;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 500px;
+    height: auto;
+    max-height: 80%;
+    position: relative;
+    overflow-y: auto;
+}
+
+.closePopup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+}
+
+.popuptitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+}
+
+.popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.popup input, .popup select {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.popup label {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.popup button {
+    padding: 10px;
+    background-color: #565859;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #202223;
+}
+
+@media (max-width: 1024px) {
+    .courses {
+        font-size: 30px;
+    }
+
+    .popupContent {
+        width: 70%;
+    }
+
+    .homecontainer {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .courses {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .homecontainer {
+        width: 85%;
+        grid-template-columns: repeat(1, 1fr); 
+    }
+
+    .popupContent {
+        width: 80%;
+    }
+
+    .popuptitle {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .courses {
+        font-size: 22px;
+    }
+
+    .popupContent {
+        width: 90%;
+    }
+
+    .popuptitle {
+        font-size: 18px;
+    }
+}

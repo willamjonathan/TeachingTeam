@@ -1,0 +1,120 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Lecturer {
+  id: number;
+  name: string;
+  department: string;
+  email: string;
+}
+
+interface Course {
+  courseCode: string;
+  title: string;
+  description: string;
+}
+
+// Define the GraphQL response interfaces
+interface GetLecturersResponse {
+  data: any;
+  getLecturers: Lecturer[];
+}
+
+interface GetCoursesResponse {
+  data: any;
+  getCourses: Course[];
+}
+
+const LecturerList: React.FC = () => {
+  const [lecturers, setLecturers] = useState<Lecturer[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchLecturersAndCourses = async () => {
+      try {
+        // Fetch lecturers
+        const lecturerResponse = await axios.post<GetLecturersResponse>(
+          "http://localhost:3006/graphql",
+          {
+            query: `
+              query {
+                getLecturers {
+                  id
+                  name
+                  department
+                  email
+                }
+              }
+            `,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setLecturers(lecturerResponse.data.data.getLecturers || []); // Ensure it's always an array
+
+        // Fetch courses
+        const courseResponse = await axios.post<GetCoursesResponse>(
+          "http://localhost:3006/graphql",
+          {
+            query: `
+              query {
+                getCourses {
+                  courseCode
+                  title
+                  description
+                }
+              }
+            `,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        setCourses(courseResponse.data.data.getCourses || []); // Ensure it's always an array
+
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch lecturers and courses");
+      }
+    };
+
+    fetchLecturersAndCourses();
+  }, []);
+
+  return (
+    <div>
+      <h1>Lecturers</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className="lecturer-list">
+        {(lecturers || []).map((lecturer) => (
+          <div key={lecturer.id} className="lecturer-box">
+            <p>Name: {lecturer.name}</p>
+            <p>Department: {lecturer.department}</p>
+            <p>Email: {lecturer.email}</p>
+          </div>
+        ))}
+      </div>
+
+      <h1>Courses</h1>
+      <div className="course-list">
+        {(courses || []).map((course) => (
+          <div key={course.courseCode} className="course-box">
+            <p>Course Code: {course.courseCode}</p>
+            <p>Title: {course.title}</p>
+            <p>Description: {course.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default LecturerList;

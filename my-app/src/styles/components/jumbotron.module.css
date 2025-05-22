@@ -1,0 +1,44 @@
+.jumbotron {
+  position: relative;
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+}
+
+.jumbotronContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.jumbotronImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .jumbotron {
+      height: 30vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .jumbotron {
+      height: 35vh;
+  }
+
+  .jumbotronImage {
+      height: 120%;
+  }
+}
+
+@media (max-width: 480px) {
+  .jumbotron {
+      height: 40vh;
+  }
+
+  .jumbotronImage {
+      height: 130%;
+  }
+}

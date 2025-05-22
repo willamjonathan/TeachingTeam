@@ -1,0 +1,241 @@
+.body {
+    background-color: #202223;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+    font-family: Arial, sans-serif;
+    font-size:16px
+
+}
+
+.choice {
+    /* gap:15px; */
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    width: 85%;
+    align-items: center;
+    justify-content: left;
+    margin: auto;
+    border-bottom: 2px solid white;
+    padding-bottom: 8px;
+    font-size: 32px;
+        margin-bottom: 30px;
+}
+
+.choice:hover {
+    cursor: pointer;
+}
+
+.courses {
+    border-right: 2px solid white;
+    padding-right: 20px;
+}
+
+.applicants {
+    border-left: 2px solid white;
+    padding-left: 20px;
+}
+
+.active {
+    color: white;
+    /* color:gray; */
+}
+
+.homecontainer {
+    margin-top: 30px;
+    color: #fff;
+    width: 85%;
+    margin: auto;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.filtercontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid white;
+    gap: 20px;
+    flex-wrap: wrap;
+    min-height: 60px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+.filter,
+.search {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.applicantBox {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.applicantBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.applicantDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.applicantContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+}
+
+.applicantInfo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.applicantInfo1 {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+
+
+}
+
+.applicantInfo2 {
+    display: flex;
+    /* background-color: red; */
+    flex-direction: row;
+}
+
+.applicantInfo p {
+    display: flex;
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+    flex: 1;
+    min-width: 150px;
+}
+
+.applicantDetails strong {
+    color: gray;
+}
+
+.biggerfont {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* padding: 10px; */
+}
+
+.dropdown {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown:focus,
+.dropdown:active {
+    background-color: gray;
+    color: white;
+}
+
+.dropdown option {
+    background-color: white;
+    color: black;
+}
+
+.dropdown:focus option {
+    background-color: gray;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .choice {
+        font-size: 26px;
+        width: 90%;
+        text-align: center;
+    }
+
+
+    .homecontainer {
+        display: grid;
+        grid-template-columns: 1fr; 
+    }
+
+    .applicantInfo2 {
+        flex-direction: column; }
+
+
+    .applicantInfo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .applicantInfo p {
+        font-size: 15px;
+        min-width: 100%;
+    }
+
+    .applicantBox {
+        padding: 10px;
+    }
+
+    .biggerfont {
+        font-size: 20px;
+    }
+
+    .filter,
+    .search {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .choice {
+        font-size: 20px;
+    }
+
+    .homecontainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5px; 
+    }
+
+    .applicantBox {
+        padding: 5px; 
+    }
+
+    .applicantInfo p {
+        font-size: 14px;
+    }
+
+    .applicantBox {
+        padding: 8px;
+    }
+
+    .biggerfont {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,101 @@
+.welcome {
+  width: 100%;
+  background: #202223;
+  color: #fff;
+}
+
+.container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto;
+  gap: 40px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.title {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 56px;
+  font-weight: 500;
+}
+
+.welcometext {
+  font-size: 28px;
+}
+
+.explore {
+  font-size: 42px;
+  font-weight: 700;
+}
+.welcomecontainer2{
+  background-color: #3e3f41;
+
+  padding:10px;
+  font-size: 28px;
+  border-radius: 10px;
+  display: flex;
+  gap:10px;
+  
+}
+.welcome{}
+.welcomeuser{
+  background-color: #565859;
+
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 24px;
+}
+
+@media (max-width: 1024px) {
+  .title, .subtitle {
+    font-size: 44px;
+  }
+
+  .welcometext {
+    font-size: 22px;
+  }
+
+  .explore {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .title, .subtitle {
+    font-size: 36px;
+  }
+
+  .welcometext {
+    font-size: 18px;
+  }
+
+  .explore {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title, .subtitle {
+    font-size: 28px;
+  }
+
+  .welcometext {
+    font-size: 16px;
+  }
+
+  .explore {
+    font-size: 24px;
+  }
+}

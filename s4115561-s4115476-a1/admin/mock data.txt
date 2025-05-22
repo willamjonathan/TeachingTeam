@@ -1,0 +1,117 @@
+Insert
+INSERT INTO candidate (id, email, name, password, DOB, gender, DOJ, is_Active) VALUES
+(1, 'cek1@gmail.com', 'Candidate One', 'Cek123456', '1995-01-01', 'Male', '2024-01-10', true),
+(2, 'cek2@gmail.com', 'Candidate Two', 'Cek123456', '1996-02-02', 'Female', '2024-01-15', true),
+(3, 'cek3@gmail.com', 'Candidate Three', 'Cek123456', '1997-03-03', 'Male', '2024-01-20', true),
+(4, 'cek4@gmail.com', 'Candidate Four', 'Cek123456', '1998-04-04', 'Female', '2024-01-25', true),
+(5, 'cek5@gmail.com', 'Candidate Five', 'Cek123456', '1999-05-05', 'Male', '2024-02-01', true),
+(6, 'cek6@gmail.com', 'Candidate Six', 'Cek123456', '1995-06-06', 'Female', '2024-02-06', true),
+(7, 'cek7@gmail.com', 'Candidate Seven', 'Cek123456', '1996-07-07', 'Male', '2024-02-11', true),
+(8, 'cek8@gmail.com', 'Candidate Eight', 'Cek123456', '1997-08-08', 'Female', '2024-02-16', true),
+(9, 'cek9@gmail.com', 'Candidate Nine', 'Cek123456', '1998-09-09', 'Male', '2024-02-21', true),
+(10, 'cek10@gmail.com', 'Candidate Ten', 'Cek123456', '1999-10-10', 'Female', '2024-02-26', true),
+(11, 'cek11@gmail.com', 'Candidate Eleven', 'Cek123456', '1995-11-11', 'Male', '2024-03-02', true),
+(12, 'cek12@gmail.com', 'Candidate Twelve', 'Cek123456', '1996-12-12', 'Female', '2024-03-07', true),
+(13, 'cek13@gmail.com', 'Candidate Thirteen', 'Cek123456', '1997-01-13', 'Male', '2024-03-12', true),
+(14, 'cek14@gmail.com', 'Candidate Fourteen', 'Cek123456', '1998-02-14', 'Female', '2024-03-17', true),
+(15, 'cek15@gmail.com', 'Candidate Fifteen', 'Cek123456', '1999-03-15', 'Male', '2024-03-22', true);
+
+
+INSERT INTO lecturer (name, department, email, password) VALUES
+('Lecturer One', 'Computer Science', 'lecturer1@gmail.com', 'Cek123456'),
+('Lecturer Two', 'Information Systems', 'lecturer2@gmail.com', 'Cek123456'),
+('Lecturer Three', 'Software Engineering', 'lecturer3@gmail.com', 'Cek123456'),
+('Lecturer Four', 'Cybersecurity', 'lecturer4@gmail.com', 'Cek123456'),
+('Lecturer Five', 'Data Science', 'lecturer5@gmail.com', 'Cek123456');
+
+INSERT INTO course (courseCode, title, description) VALUES
+('CS101', 'Introduction to Programming', 'Basic programming concepts using Python.'),
+('CS202', 'Web Application Development', 'Covers frontend and backend development using modern web technologies.');
+
+
+INSERT INTO applied_form (courseID, candidateID, position, previousRole, availability, skillSet, academicCredential) VALUES
+('CS101', 1, 'Teaching Assistant', 'Student', 'Weekdays', 'Java,Python', 'Bachelor in IT'),
+('CS202', 2, 'Lab Assistant', 'Intern', 'Weekends', 'HTML,CSS,JavaScript', 'Diploma in CS'),
+('CS101', 3, 'Project Helper', 'Volunteer', 'Evenings', 'Python,Git', 'Bachelor in SE'),
+('CS202', 4, 'Course Grader', 'Freelancer', 'Flexible', 'React,Node.js', 'Bachelor in CS'),
+('CS101', 5, 'Teaching Assistant', 'Student', 'Weekdays', 'C++,Java', 'Bachelor in IT'),
+('CS202', 6, 'Lab Assistant', 'Intern', 'Weekends', 'MongoDB,Express', 'Diploma in CS'),
+('CS101', 7, 'Project Helper', 'Student', 'Evenings', 'JavaScript,HTML', 'Bachelor in SE'),
+('CS202', 8, 'Course Grader', 'Teaching Assistant', 'Flexible', 'Python,Django', 'Bachelor in CS'),
+('CS101', 9, 'Teaching Assistant', 'Volunteer', 'Weekdays', 'PHP,Laravel', 'Bachelor in IT'),
+('CS202', 10, 'Lab Assistant', 'Intern', 'Weekends', 'React,TypeScript', 'Diploma in CS'),
+('CS101', 11, 'Project Helper', 'Student', 'Evenings', 'Node.js,Express', 'Bachelor in SE'),
+('CS202', 12, 'Course Grader', 'Freelancer', 'Flexible', 'Vue.js,JavaScript', 'Bachelor in CS'),
+('CS101', 13, 'Teaching Assistant', 'Volunteer', 'Weekdays', 'Java,Spring', 'Bachelor in IT'),
+('CS202', 14, 'Lab Assistant', 'Intern', 'Weekends', 'MySQL,PostgreSQL', 'Diploma in CS'),
+('CS101', 15, 'Project Helper', 'Student', 'Evenings', 'Python,Numpy', 'Bachelor in SE’);
+
+
+
+-- Candidates 1, 2, 3 get 0 preferences (no inserts)
+
+-- Candidates 4, 5, 6 get 1 preference each
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 1, 'CS101', 4, 1, 'High priority'),
+(UUID(), 2, 'CS202', 5, 1, 'Preferred course'),
+(UUID(), 1, 'CS101', 6, 1, 'Interested');
+
+-- Candidates 7, 8, 9 get 2 preferences each
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 1, 'CS101', 7, 1, 'Top choice'),
+(UUID(), 2, 'CS202', 7, 2, 'Backup option'),
+
+(UUID(), 1, 'CS101', 8, 1, 'Main course'),
+(UUID(), 2, 'CS202', 8, 2, 'Second choice'),
+
+(UUID(), 2, 'CS202', 9, 1, 'Preferred'),
+(UUID(), 1, 'CS101', 9, 2, 'Secondary');
+
+-- Candidates 10, 11, 12, 13, 14, 15 get 4 or 5 preferences each
+
+-- Candidate 10 with 4 preferences
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 1, 'CS101', 10, 1, 'Top priority'),
+(UUID(), 2, 'CS202', 10, 2, 'Very interested'),
+(UUID(), 1, 'CS101', 10, 3, 'Good fit'),
+(UUID(), 2, 'CS202', 10, 4, 'Backup');
+
+-- Candidate 11 with 5 preferences
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 2, 'CS202', 11, 1, 'First choice'),
+(UUID(), 1, 'CS101', 11, 2, 'Second choice'),
+(UUID(), 2, 'CS202', 11, 3, 'Third option'),
+(UUID(), 1, 'CS101', 11, 4, 'Fourth'),
+(UUID(), 2, 'CS202', 11, 5, 'Fifth');
+
+-- Candidate 12 with 4 preferences
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 1, 'CS101', 12, 1, 'Preferred'),
+(UUID(), 2, 'CS202', 12, 2, 'Good backup'),
+(UUID(), 1, 'CS101', 12, 3, 'Nice to have'),
+(UUID(), 2, 'CS202', 12, 4, 'Fallback');
+
+-- Candidate 13 with 5 preferences
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 2, 'CS202', 13, 1, 'First'),
+(UUID(), 1, 'CS101', 13, 2, 'Second'),
+(UUID(), 2, 'CS202', 13, 3, 'Third'),
+(UUID(), 1, 'CS101', 13, 4, 'Fourth'),
+(UUID(), 2, 'CS202', 13, 5, 'Fifth');
+
+-- Candidate 14 with 4 preferences
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 1, 'CS101', 14, 1, 'Top priority'),
+(UUID(), 2, 'CS202', 14, 2, 'Very interested'),
+(UUID(), 1, 'CS101', 14, 3, 'Good fit'),
+(UUID(), 2, 'CS202', 14, 4, 'Backup');
+
+-- Candidate 15 with 5 preferences
+INSERT INTO preference (preferenceID, lecturerId, courseCourseCode, candidateId, preferenceNumber, comment) VALUES
+(UUID(), 2, 'CS202', 15, 1, 'First choice'),
+(UUID(), 1, 'CS101', 15, 2, 'Second choice'),
+(UUID(), 2, 'CS202', 15, 3, 'Third option'),
+(UUID(), 1, 'CS101', 15, 4, 'Fourth'),
+(UUID(), 2, 'CS202', 15, 5, 'Fifth');
+
+

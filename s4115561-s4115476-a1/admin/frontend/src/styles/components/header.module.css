@@ -1,0 +1,53 @@
+/* styles/components/header.module.css */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #202223;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    height: auto;
+    width: 100%;
+    padding: 10px 20px;
+    z-index: 10;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+    padding: 10px;
+  }
+  
+  .container a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    margin-top: auto;
+  }
+  
+  .logoutButton {
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    align-self: flex-end;
+    margin-top: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      height: auto;
+      padding: 8px 15px;
+    }
+  
+    .container a,
+    .logoutButton {
+      font-size: 20px;
+      margin-top: 5px;
+    }
+  }
+  

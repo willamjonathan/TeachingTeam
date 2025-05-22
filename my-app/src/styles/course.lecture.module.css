@@ -1,0 +1,288 @@
+.body {
+    background-color: #202223;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+    font-family: Arial, sans-serif;
+}
+
+.courseInfo {
+    /* height:auto; */
+   /* margin-bottom:auto; */
+   
+   width: 90%;
+   margin:auto;
+   margin-top:150px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-bottom: 2px solid white;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+    /* font-size: 50px; */
+}
+
+.courseName{
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    text-align: center; 
+}
+
+
+.applicantList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 85%;
+    margin: auto;
+    margin-top:0;
+}
+
+.applicantBox {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.applicantBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.applicantDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.applicantContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    color: white;
+}
+
+.applicantInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.applicantInfo p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+    flex: 1;
+    min-width: 150px;
+}
+
+.applicantDetails strong {
+    color: gray;
+}
+
+.biggerfont {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.selectedPreferences{
+    color:white;
+    /* display: flex; */
+    /* gap:10px;    */
+    flex-direction: row;
+    margin: auto;
+    gap:10px;
+
+}
+.selectedPreferences input{
+    margin-right: 10px;
+
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10px;
+}
+
+.enterButton {
+    background-color: #6c757d; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    margin-bottom: 50px; 
+    
+}
+
+.enterButton:hover {
+    background-color: #545b62; 
+    
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; 
+
+}
+
+.modalContent {
+    background: #2e2f30; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px; 
+    text-align: center;
+    color: white; 
+    
+}
+
+.username{
+    font-size: 25px;
+    display: flex;
+    align-items: left;
+    font-weight: 600;
+    border-bottom: 2px solid white;
+    padding:10px;
+    margin-bottom: 10px;
+}
+
+.modal label{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: left;
+    margin-top: 30px;
+    font-size:20px;
+}
+
+.modalContent button {
+    background: #6c757d; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; 
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modalContent button:hover {
+    background: #545b62; 
+}
+
+.modalContent form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modalContent select {
+    padding: 8px;
+    border: 1px solid #555; 
+    border-radius: 5px;
+    background: #3a3b3c;
+    color: white;
+    outline: none;
+    width: 100%;
+}
+
+.modalContent select option {
+    background: #3a3b3c; 
+    color: white;
+}
+
+.noApplicants {
+    text-align: center;
+    font-size: 1.2rem;
+    color: white; 
+    font-weight: bold;
+    padding: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media (max-width: 768px) {
+    .courseInfo {
+        margin-top: 100px; 
+        width: 95%;
+    }
+
+    .applicantList {
+        width: 95%;
+    }
+
+    .modalContent {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .username {
+        font-size: 22px;
+    }
+
+    .modal label {
+        font-size: 18px;
+    }
+
+    .enterButton {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .courseName {
+        font-size: 28px;
+    }
+
+    .username {
+        font-size: 20px;
+    }
+
+    .modalContent {
+        padding: 10px;
+    }
+
+    .modal label {
+        font-size: 16px;
+    }
+
+    .modalContent button {
+        font-size: 14px;
+    }
+}
+
+.comment {
+    font-size: 14px;
+    color: white;
+    margin-top: 5px;
+}
