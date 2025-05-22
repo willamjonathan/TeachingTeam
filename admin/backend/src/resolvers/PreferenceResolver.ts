@@ -4,12 +4,14 @@ import { AppliedForm } from "../entity/appliedForm";
 
 export const preferenceResolvers = {
   Query: {
+    // get preferences
     getPreferences: async () => {
       const prefRepo = AppDataSource.getRepository(Preference);
       return await prefRepo.find({
         relations: ["lecturer", "course", "candidate"],
       });
     },
+    // get candidate per course
     getCandidatesPerCourse: async () => {
         const prefRepo = AppDataSource.getRepository(Preference);
       
@@ -30,7 +32,7 @@ export const preferenceResolvers = {
         const result: Record<string, any[]> = {};
       
         preferences.forEach(p => {
-          const courseCode = p.courseCode;  // Ensure this is being assigned correctly
+          const courseCode = p.courseCode;  
           const candidateData = {
             id: p.candidateId,
             name: p.candidateName,
@@ -51,7 +53,7 @@ export const preferenceResolvers = {
       },
       
       
-
+    // Get candidates who have been chosen for more than 3 for any course
     getCandidatesMoreThan3Courses: async () => {
         const prefRepo = AppDataSource.getRepository(Preference);
       
@@ -73,7 +75,7 @@ export const preferenceResolvers = {
       },
 
 
-    // Report 3: Get candidates who have not been chosen for any course
+    // Get candidates who have not been chosen for any course
     getCandidatesNotChosen: async () => {
       const appliedRepo = AppDataSource.getRepository(AppliedForm);
 

@@ -9,7 +9,7 @@ export const taughtCourseResolvers = {
     getTaughtCourses: async () => {
       const taughtCourseRepo = AppDataSource.getRepository(TaughtCourse);
       const taughtCourses = await taughtCourseRepo.find({ 
-        relations: ["lecturer", "course"] // Ensure you load the related lecturer and course
+        relations: ["lecturer", "course"] 
       });
 
       return taughtCourses;
@@ -38,8 +38,8 @@ export const taughtCourseResolvers = {
 
         // Create a new TaughtCourse entity
         const newTaughtCourse = new TaughtCourse();
-        newTaughtCourse.lecturer = lecturer;  // Assign the full Lecturer entity
-        newTaughtCourse.course = course;  // Assign the full Course entity
+        newTaughtCourse.lecturer = lecturer;  
+        newTaughtCourse.course = course;  
 
         // Save the new TaughtCourse to the database
         await taughtCourseRepo.save(newTaughtCourse);

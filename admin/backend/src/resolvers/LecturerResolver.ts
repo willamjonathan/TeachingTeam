@@ -8,7 +8,7 @@ export const lecturerResolvers = {
       const lecturers = await lecturerRepo.find();
   
       // Remove the password before returning data
-      return lecturers.map(({ password, ...rest }) => rest); // Exclude password from the response
+      return lecturers.map(({ password, ...rest }) => rest); 
     },
     getLecturerById: async (_: any, { id }: { id: number }) => {
       const lecturerRepo = AppDataSource.getRepository(Lecturer);
