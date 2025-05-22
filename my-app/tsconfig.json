@@ -12,8 +12,24 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".", 
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["controller", "entity", "routes", "tests", "*.ts", "tests"],
-  "exclude": ["node_modules"]
+  "include": [
+    "controller",
+    "entity",
+    "routes",
+    "tests",
+    "src",
+    "*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
