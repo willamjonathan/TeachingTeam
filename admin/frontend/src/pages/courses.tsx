@@ -20,6 +20,19 @@ interface CourseMutationResponse {
   editCourse: Course;
 }
 
+interface AddCourseData {
+  data: {
+    addCourse: Course;
+  };
+}
+
+interface EditCourseResponse {
+  data: {
+    editCourse: Course;
+  };
+}
+
+
 
 
 const CoursePage: React.FC = () => {
@@ -112,8 +125,16 @@ const CoursePage: React.FC = () => {
           "Content-Type": "application/json",
         },
       });
-      console.log(response.data)
-      const addedCourse = response.data.data.addCourse;
+      // console.log('cek',response)
+      // console.log(response.data)
+      // const addedCourse = response.data.data.addCourse;
+      // setCourses([...courses, addedCourse]);
+      // setNewCourse({ courseCode: "", title: "", description: "" });
+      // setError("");
+      // window.alert("Course added successfully!");
+      const typedResponse = response as { data: AddCourseData };
+
+      const addedCourse = typedResponse.data.data.addCourse;
       setCourses([...courses, addedCourse]);
       setNewCourse({ courseCode: "", title: "", description: "" });
       setError("");
@@ -149,19 +170,38 @@ const CoursePage: React.FC = () => {
             "Content-Type": "application/json",
           },
         });
-        console.log("TESTT")
-        const updatedCourse = response.data.data.editCourse;
-        console.log(updatedCourse)
+        // console.log("TESTT")
+        // const updatedCourse = response.data.data.editCourse;
+        // console.log(updatedCourse)
+        // // Update courses state with the edited course
+        // setCourses(courses.map(course =>
+        //   course.courseCode === updatedCourse.courseCode ? updatedCourse : course
+        // ));
+
+        // // Clear the form after update
+        // setEditingCourse(null);
+        // setNewCourse({ courseCode: "", title: "", description: "" });
+        // setError("");
+        // window.alert("Course updated successfully!");
+        console.log("TESTT");
+
+        // Safely cast the response to the expected structure
+        const typedResponse = response as { data: EditCourseResponse };
+
+        const updatedCourse = typedResponse.data.data.editCourse;
+        console.log(updatedCourse);
+
         // Update courses state with the edited course
         setCourses(courses.map(course =>
           course.courseCode === updatedCourse.courseCode ? updatedCourse : course
         ));
-  
+
         // Clear the form after update
         setEditingCourse(null);
         setNewCourse({ courseCode: "", title: "", description: "" });
         setError("");
         window.alert("Course updated successfully!");
+
 
       } catch (err: any) {
         console.error(err);
@@ -170,7 +210,7 @@ const CoursePage: React.FC = () => {
       }
     }
   };
-  
+
   const deleteCourse = async (courseCode: string) => {
     try {
       await axios.post("http://localhost:3006/graphql", {
