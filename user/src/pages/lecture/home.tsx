@@ -77,6 +77,8 @@ const Home = () => {
     const [filteredApplicants, setFilteredApplicants] = useState<Applicant[]>([]);
     const [selectedCourse, setSelectedCourse] = useState<string>("All");
     const [selectedAvailability, setSelectedAvailability] = useState<string>("All");
+    const [selectedPosition, setSelectedPosition] = useState<string>("All");
+
     const [searchName, setSearchName] = useState<string>("");
     const [chosenCount, setChosenCount] = useState<string>("All");
     const router = useRouter();
@@ -97,7 +99,7 @@ const Home = () => {
         if (lecturerID) {
             fetchFilteredCandidates();
         }
-    }, [selectedCourse, selectedAvailability, selectedSkillSet, searchName, chosenCount, lecturerID]);
+    }, [selectedCourse, selectedAvailability, selectedPosition, selectedSkillSet, searchName, chosenCount, lecturerID]);
 
 
 
@@ -120,6 +122,7 @@ const Home = () => {
             const params = new URLSearchParams();
             if (selectedCourse !== "All") params.append("courseId", selectedCourse);
             if (selectedAvailability !== "All") params.append("availability", selectedAvailability);
+            if (selectedPosition !== "All") params.append("position", selectedPosition);
             if (selectedSkillSet !== "All") params.append("skillSet", selectedSkillSet);
             if (searchName.trim() !== "") params.append("searchName", searchName.trim());
             if (chosenCount !== "All") {
@@ -313,6 +316,16 @@ const Home = () => {
                             </select>
                         </div>
 
+                        <div className={styles1.filter}>
+                            <label>Filter by Position:</label>
+                            <select value={selectedPosition}
+                                onChange={e => setSelectedPosition(e.target.value)}
+                                className={styles1.dropdown}>
+                                <option value="All">All</option>
+                                <option value="TA">TA</option>
+                                <option value="Lab-assistant">Lab-assistant</option>
+                            </select>
+                        </div>
 
 
                         {/* Search filter */}
@@ -363,6 +376,8 @@ const Home = () => {
                                                     <p><strong>Availability:</strong> {form.availability}</p>
                                                     <p><strong>Skill Set:</strong> {form.skillSet || "N/A"}</p>
                                                     <p><strong>Academic Credential:</strong> {form.academicCredential || "N/A"}</p>
+                                                    <p><strong>Position:</strong> {form.position}</p>
+
                                                 </div>
                                             </div>
                                         ))}

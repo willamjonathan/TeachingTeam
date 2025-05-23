@@ -518,7 +518,7 @@ export const getApplicantsByCourseId = async (req: Request, res: Response) => {
 
 export const getFilteredCandidates = async (req: Request, res: Response) => {
   try {
-    let { courseId, availability, skillSet, searchName, filterCountType } = req.query;
+    let { courseId, availability, skillSet, searchName, filterCountType, position } = req.query;
 
     // Normalize filterCountType input
     if (typeof filterCountType === "string") {
@@ -545,7 +545,9 @@ export const getFilteredCandidates = async (req: Request, res: Response) => {
     if (availability && availability !== "All") {
       query = query.andWhere("appliedForm.availability = :availability", { availability });
     }
-
+    if (position && position !== "All") {
+      query = query.andWhere("appliedForm.position = :position", { position });
+    }
     if (skillSet && skillSet !== "All") {
       query = query.andWhere("appliedForm.skillSet LIKE :skillSet", { skillSet: `%${skillSet}%` });
     }
