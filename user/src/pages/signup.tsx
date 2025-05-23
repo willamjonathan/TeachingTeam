@@ -5,6 +5,7 @@ import styles from "../styles/Signup.module.css";
 import React from 'react';
 
 const Signup = () => {
+  const [role, setRole] = useState<'candidate' | 'lecturer'>('candidate');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -25,6 +26,14 @@ const Signup = () => {
   };
 
   const handleSignup = async () => {
+    if (role === "candidate") {
+      await handleSignupCandidate();
+    } else if (role === "lecturer") {
+      await handleSignupLecturer();
+    }
+  };
+  
+  const handleSignupCandidate = async () => {
     const normalizedEmail = email.toLowerCase();
 
     if (!isValidEmail(normalizedEmail)) {
@@ -84,6 +93,53 @@ const Signup = () => {
     }
   };
 
+  const handleSignupLecturer = async () => {
+    const normalizedEmail = email.toLowerCase();
+    
+    if (!isValidEmail(normalizedEmail)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      alert('Password must be at least 8 characters long and contain at least one uppercase letter.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5001/api/lecturers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: normalizedEmail,
+          password: password,
+          department: "ComputerScience"
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+
+        if (response.status === 400 && errorData.message === "Email is already in use") {
+          alert('Email is already registered. Please try logging in.');
+        } else {
+          alert(`Signup failed: ${errorData.message || response.statusText}`);
+        }
+        return;
+      }
+
+      await response.json();
+      alert('Account created successfully!');
+      router.push('/login');
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert('An error occurred. Please try again later.');
+    }
+  }
+
   return (
     <div className={styles["signup-page"]}>
       <div className={styles["company-name"]}>
@@ -101,6 +157,15 @@ const Signup = () => {
           />
         </div>
         <div className={styles["form-container"]}>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value as 'candidate' | 'lecturer')}
+            className={styles["input-field"]}
+          >
+            <option value="candidate">Candidate</option>
+            <option value="lecturer">Lecturer</option>
+          </select>
+
           <input
             type="email"
             placeholder="Email Address"

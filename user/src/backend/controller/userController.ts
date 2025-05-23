@@ -80,6 +80,34 @@ export const createCandidate = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const createLecturers = async (req: Request, res: Response) => {
+  const { name, email, password, department } = req.body;
+
+  try {
+    const existingCandidate = await AppDataSource.getRepository(Lecturer).findOne({
+      where: { email: email.toLowerCase() }, // Case-insensitive check
+    });
+
+    if (existingCandidate) {
+      return res.status(400).json({ message: "Email is already in use" });
+    }
+
+    const lecturer = new Lecturer();
+    lecturer.name = name;
+    lecturer.email = email.toLowerCase();
+    lecturer.password = password; // Note: storing plain passwords is not recommended
+    lecturer.department = department;
+
+    await AppDataSource.getRepository(Lecturer).save(lecturer);
+
+    return res.status(201).json({ message: "Lecturer created successfully", lecturer });
+  } catch (error) {
+    console.error("Error creating lecturer:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const getCandidateNameById = async (req: Request, res: Response) => {
   const candidateId = parseInt(req.params.id, 10);
 
