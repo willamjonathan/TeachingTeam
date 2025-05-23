@@ -332,7 +332,7 @@ const Home = () => {
                 placeholder="Enter your academic credential"
                 required
               />
-              <label htmlFor="position">Position</label>
+              {/* <label htmlFor="position">Position</label>
               <input
                 type="text"
                 id="position"
@@ -341,7 +341,17 @@ const Home = () => {
                 onChange={handleInputChange}
                 placeholder="Enter your desired position"
                 required
-              />
+              /> */}
+             <select
+                id="position"
+                name="position"
+                value={formData.position}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="TA">TA</option>
+                <option value="Lab-assistant">Lab-assistant</option>
+              </select>
 
               {/* Hidden courseCode field */}
               <input
