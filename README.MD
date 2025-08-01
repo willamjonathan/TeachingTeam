@@ -1,4 +1,3 @@
-
 # 📘 Teaching Team (TT)
 
 This project was developed as a **Fullstack Development course assignment** during the last semester. The system, titled **Teaching Team (TT)**, is a multi-user platform designed to streamline the process of tutor and lab assistant applications, course management, and lecturer-candidate coordination at a university level.
